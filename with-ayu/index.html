@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="id" class="overflow-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, interactive-widget=resizes-content">
+    <title id="title">Undangan Pernikahan</title>
+
+    <!-- Open Graph / Social Media Link Preview Meta Tags -->
+    <meta name="description" content="Rabu, 07 Oktober 2026">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="The Wedding of Gus Eka & Ayu Krisma">
+    <meta property="og:description" content="Rabu, 07 Oktober 2026">
+    <meta property="og:image" content="assets/images/quote.webp">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+    <!-- Basic Favicon --> <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico"> <!-- Apple Touch Icon (iOS) --> <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-brand-bg text-brand-dark font-sans antialiased overflow-hidden">
+
+    <!-- AUDIO ELEMENT -->
+    <audio id="bg-music" loop>
+        <source src="assets/music/f8tnHUSQa.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed top-5 left-1/2 transform -translate-x-1/2 bg-brand-dark text-white px-6 py-3 rounded-full shadow-lg transition-all duration-300 opacity-0 z-[120] pointer-events-none translate-y-[-20px]"></div>
+
+    <!-- ========================================== -->
+    <!-- 0. LOADING SCREEN                          -->
+    <!-- ========================================== -->
+    <div id="loading-screen" class="fixed inset-0 z-[9999] bg-brand-bg flex flex-col items-center justify-center transition-opacity duration-1000 ornament-bg">
+        <div class="absolute inset-0 bg-white/70 z-0"></div>
+        <div class="flex flex-col items-center z-10">
+            <div class="w-36 h-36 overflow-hidden shadow-xl border border-brand-gold/50 mb-6 bg-gray-200">
+                <img id="loading-img" src="assets/images/loadimg.webp" alt="Loading" class="w-full h-full object-cover">
+            </div>
+            <p id="loading-text" class="font-bold text-brand-gold tracking-widest text-sm uppercase mb-3 drop-shadow-sm text-center px-4">The Wedding of...</p>
+            <p id="loading-progress" class="font-sans text-brand-dark font-semibold text-2xl">0%</p>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 1. FULL SCREEN WELCOME OVERLAY (COVER)     -->
+    <!-- ========================================== -->
+    <section id="welcome-overlay" class="fixed inset-0 z-[100] bg-brand-bg flex flex-col items-center justify-center p-6 text-center h-[100dvh] w-full ornament-bg opacity-0 transition-opacity duration-500">
+        <div class="absolute inset-0 bg-black/30 z-0"></div>
+        
+        <!-- Cover Slideshow Background -->
+        <div id="cover-slideshow-container" class="absolute inset-0 w-full h-full overflow-hidden z-[-1] animate-fade-in" style="animation-duration: 3s;">
+        </div>
+        
+        <div class="relative z-10 flex flex-col items-center justify-between h-full pt-[3rem] pb-[0.2rem] w-full">
+            <div class="animate-fade-in" style="animation-delay: 0.4s;">
+                <p class="text-sm tracking-widest uppercase mb-2 text-brand-goldlight drop-shadow-2xl">The Wedding of</p>
+                <h1 id="cover-title" class="font-script text-4xl text-white mb-4 drop-shadow-2xl">Nama & Nama</h1>
+            </div>
+
+            <div class="glass-panel p-3 rounded-2xl w-full max-w-sm text-brand-dark animate-fade-in shadow-xl" style="animation-delay: 0.9s;">
+                <p class="text-sm mb-2 text-gray-600">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+                <h2 id="guest-name-display" class="font-serif text-2xl font-bold mb-4 text-brand-gold drop-shadow-lg">Tamu Undangan</h2>
+                <p class="text-xs text-gray-600 mb-2 italic">*Mohon maaf apabila ada kesalahan penulisan nama/gelar</p>
+                
+                <button onclick="openInvitation()" class="bg-brand-gold hover:bg-brand-goldlight text-white px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2 w-full font-semibold text-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>
+                    Buka Undangan
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MAIN LAYOUT: Split Desktop, Stacked Mobile -->
+    <!-- ========================================== -->
+    <div id="main-wrapper" class="block w-full h-[100dvh] overflow-y-auto overflow-x-clip snap-y snap-mandatory scroll-smooth relative bg-brand-bg mx-auto no-scrollbar">
+        
+
+
+        <!-- MID PANEL: Scrollable Content -->
+        <div class="w-full flex flex-col">
+            
+            <!-- 3. QUOTE / OM SWASTYASTU -->
+            <section id="sec-quote" class="min-h-[100dvh] snap-start flex flex-col px-6 sm:px-8 text-center bg-white relative overflow-hidden">
+                <img id="quote-bg-img" class="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none z-0" />
+                <div class="absolute inset-4 sm:inset-6 border border-brand-gold/70 pointer-events-none z-10 flex flex-col justify-between rounded-sm" data-aos="fade-up">
+                    <div class="flex justify-between">
+                        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-brand-gold/70 fill-current" viewBox="0 0 50 50"><path d="M0 0h50v2H2v48H0z"/><path d="M6 6h15v2H8v15H6z"/><circle cx="15" cy="15" r="2"/></svg>
+                        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-brand-gold/70 fill-current transform scale-x-[-1]" viewBox="0 0 50 50"><path d="M0 0h50v2H2v48H0z"/><path d="M6 6h15v2H8v15H6z"/><circle cx="15" cy="15" r="2"/></svg>
+                    </div>
+                    <div class="flex justify-between">
+                        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-brand-gold/70 fill-current transform scale-y-[-1]" viewBox="0 0 50 50"><path d="M0 0h50v2H2v48H0z"/><path d="M6 6h15v2H8v15H6z"/><circle cx="15" cy="15" r="2"/></svg>
+                        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-brand-gold/70 fill-current transform scale-x-[-1] scale-y-[-1]" viewBox="0 0 50 50"><path d="M0 0h50v2H2v48H0z"/><path d="M6 6h15v2H8v15H6z"/><circle cx="15" cy="15" r="2"/></svg>
+                    </div>
+                </div>
+
+                <div class="my-auto w-full max-w-[90%] sm:max-w-[80%] lg:max-w-4xl mx-auto flex flex-col items-center relative z-10 py-12 lg:py-16 drop-shadow-[0_2px_8px_rgba(255,255,255,0.9)]" data-aos="fade-up" data-aos-delay="100">
+                    <svg id="default-quote-icon" class="w-28 sm:w-36 md:w-40 lg:w-48 h-auto mb-6 lg:mb-8 text-brand-gold opacity-80" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M100 0C80 20 50 20 0 20C50 20 80 40 100 40C120 40 150 20 200 20C150 20 120 20 100 0Z" fill="currentColor"/>
+                        <circle cx="100" cy="20" r="5" fill="currentColor"/>
+                    </svg>
+
+                    <div class="flex justify-center mb-4 hidden" id="quote-icon-container">
+                        <img id="quote-icon" alt="Ornament" class="h-14 lg:h-20 w-auto object-contain drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]" />
+                    </div>
+
+                    <h3 id="greeting-sign" class="font-serif text-md md:text-lg lg:text-2xl font-bold text-brand-gold mb-4 lg:mb-8 drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]">Salam</h3>
+                    <p id="greeting-content" class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight text-gray-800 mb-4 lg:mb-6 lg:max-w-[80%] mx-auto font-medium drop-shadow-[0_1px_3px_rgba(255,255,255,0.9)]">
+                        "Selamat datang"
+                    </p>
+                    <p id="greeting-content2" class="text-sm sm:text-md md:text-xl lg:text-2xl leading-relaxed text-brand-dark italic mb-4 lg:mb-6 lg:max-w-[75%] mx-auto antialiased drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]">
+                        "Kembali Lagi"
+                    </p>
+                    <p id="greeting-content3" class="text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed text-gray-600 mb-4 lg:max-w-[80%] antialiased drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]">
+                        Bersama Saya
+                    </p>
+                    
+
+                    <svg class="w-28 sm:w-36 md:w-40 lg:w-48 h-auto mt-4 lg:mt-6 text-brand-gold opacity-80 drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M100 0C80 20 50 20 0 20C50 20 80 40 100 40C120 40 150 20 200 20C150 20 120 20 100 0Z" fill="currentColor"/>
+                        <circle cx="100" cy="20" r="5" fill="currentColor"/>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- 4. MEMPELAI (THE COUPLE) - Separated snaps on Mobile, Row on Desktop -->
+            <section id="sec-groom-bride" class="flex flex-col items-center md:flex-row md:snap-start md:min-h-[100.1dvh] md:justify-center ornament-bg bg-white/50 w-full px-4 lg:px-12">
+                
+                <!-- Groom (Mobile Snap 1) -->
+                <div id="sec-groom" class="min-h-[100dvh] md:min-h-0 snap-start md:snap-align-none flex flex-col justify-center items-center text-center flex-1 w-full max-w-md lg:max-w-lg py-6 sm:py-8 lg:py-10 px-6">
+                    <div class="w-56 h-72 sm:w-64 sm:h-80 md:w-56 md:h-72 lg:w-64 lg:h-80 max-h-[50vh] sm:max-h-[55vh] md:max-h-[40vh] rounded-t-full rounded-b-xl overflow-hidden border-4 border-brand-bg shadow-xl mb-4 lg:mb-6 relative bg-brand-bg" data-aos="fade-up">
+                        <div id="groom-slideshow-container" class="absolute inset-0 w-full h-full overflow-hidden z-0">
+                        </div>
+                        <div class="absolute inset-0 border-2 border-brand-gold rounded-t-full rounded-b-xl m-2 pointer-events-none z-10"></div>
+                    </div>
+                    
+                    <!-- Text Wrapper to lock height for symmetry -->
+                    <div class="flex flex-col items-center justify-start w-full" data-aos="fade-up">
+                        <h2 id="groom-full" class="font-script text-2xl lg:text-3xl text-brand-gold mb-1 lg:mb-2 drop-shadow-lg font-bold">Nama Pria</h2>
+                        <p id="groom-parents" class="text-xs sm:text-sm lg:text-base font-semibold text-brand-dark drop-shadow-md">Bapak ... & Ibu ...</p>
+                        <p id="groom-address" class="text-xs lg:text-sm text-gray-500 mt-1 lg:mt-2 max-w-[200px] lg:max-w-[280px] drop-shadow-md">Alamat Pria</p>
+                        <a id="groom-ig-link" href="#" target="_blank" class="mt-2.5 lg:mt-4 text-brand-sage hover:text-brand-gold transition-colors flex items-center">
+                            <svg class="w-4 h-4 lg:w-5 lg:h-5 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            <span id="groom-ig" class="text-xs lg:text-sm ml-1 font-semibold drop-shadow-lg">@ig</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Desktop Divider -->
+                <div class="hidden md:flex flex-col items-center justify-center -mx-4 z-10">
+                     <h2 class="font-script text-4xl lg:text-5xl text-brand-gold p-2 drop-shadow-xl">&</h2>
+                </div>
+
+                <!-- Mobile Divider -->
+                <div class="md:hidden w-full h-0 relative flex justify-center items-center z-20 pointer-events-none">
+                    <h2 class="font-script text-6xl text-brand-gold p-2 absolute drop-shadow-xl">
+                        &
+                    </h2>
+                </div>
+
+                <!-- Bride (Mobile Snap 2) -->
+                <div id="sec-bride" class="min-h-[100dvh] md:min-h-0 snap-start md:snap-align-none flex flex-col justify-center items-center text-center flex-1 w-full max-w-md lg:max-w-lg py-6 sm:py-8 lg:py-10 px-6 relative">
+                    <div class="w-56 h-72 sm:w-64 sm:h-80 md:w-56 md:h-72 lg:w-64 lg:h-80 max-h-[50vh] sm:max-h-[55vh] md:max-h-[40vh] rounded-t-full rounded-b-xl overflow-hidden border-4 border-brand-bg shadow-xl mb-4 lg:mb-6 relative bg-brand-bg" data-aos="fade-up">
+                        <div id="bride-slideshow-container" class="absolute inset-0 w-full h-full overflow-hidden z-0">
+                        </div>
+                        <div class="absolute inset-0 border-2 border-brand-gold rounded-t-full rounded-b-xl m-2 pointer-events-none z-10"></div>
+                    </div>
+                    
+                    <!-- Text Wrapper to lock height for symmetry -->
+                    <div class="flex flex-col items-center justify-start w-full" data-aos="fade-up">
+                        <h2 id="bride-full" class="font-script text-2xl lg:text-3xl text-brand-gold mb-1 lg:mb-2 drop-shadow-lg font-bold">Nama Wanita</h2>
+                        <p id="bride-parents" class="text-xs sm:text-sm lg:text-base font-semibold text-brand-dark drop-shadow-md">Bapak ... & Ibu ...</p>
+                        <p id="bride-address" class="text-xs lg:text-sm text-gray-500 mt-1 lg:mt-2 max-w-[200px] lg:max-w-[280px] drop-shadow-md">Alamat Wanita</p>
+                        <a id="bride-ig-link" href="#" target="_blank" class="mt-2.5 lg:mt-4 text-brand-sage hover:text-brand-gold transition-colors flex items-center">
+                            <svg class="w-4 h-4 lg:w-5 lg:h-5 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            <span id="bride-ig" class="text-xs lg:text-sm ml-1 font-semibold drop-shadow-lg">@ig</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. EVENTS & COUNTDOWN -->
+            <section id="sec-event" class="min-h-[100dvh] snap-start flex flex-col px-6 bg-brand-dark text-white relative overflow-hidden">
+                <img id="event-bg-img" class="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none" />
+                <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] mix-blend-overlay"></div>
+                <div class="my-auto w-full relative z-10 py-8 sm:py-12 lg:py-12 lg:max-w-4xl lg:mx-auto" data-aos="fade-down">
+                    <div class="text-center mb-4 sm:mb-6 lg:mb-8">
+                        <h3 class="font-script text-2xl sm:text-3xl lg:text-4xl text-brand-goldlight mb-3 lg:mb-4 drop-shadow-xl">Waktu Menuju Bahagia</h3>
+                        <div class="flex justify-center gap-2.5 sm:gap-3 lg:gap-4 mt-2 sm:mt-3">
+                            <div class="bg-white/10 rounded-lg p-2 sm:p-2.5 lg:p-3 w-14 sm:w-16 lg:w-20 text-center backdrop-blur-sm border border-white/20">
+                                <p id="cd-days" class="font-serif text-xl sm:text-2xl lg:text-3xl font-bold text-brand-goldlight">00</p>
+                                <p class="text-[9px] lg:text-[10px] uppercase tracking-wider mt-0.5">Hari</p>
+                            </div>
+                            <div class="bg-white/10 rounded-lg p-2 sm:p-2.5 lg:p-3 w-14 sm:w-16 lg:w-20 text-center backdrop-blur-sm border border-white/20">
+                                <p id="cd-hours" class="font-serif text-xl sm:text-2xl lg:text-3xl font-bold text-brand-goldlight">00</p>
+                                <p class="text-[9px] lg:text-[10px] uppercase tracking-wider mt-0.5">Jam</p>
+                            </div>
+                            <div class="bg-white/10 rounded-lg p-2 sm:p-2.5 lg:p-3 w-14 sm:w-16 lg:w-20 text-center backdrop-blur-sm border border-white/20">
+                                <p id="cd-minutes" class="font-serif text-xl sm:text-2xl lg:text-3xl font-bold text-brand-goldlight">00</p>
+                                <p class="text-[9px] lg:text-[10px] uppercase tracking-wider mt-0.5">Menit</p>
+                            </div>
+                            <div class="bg-white/10 rounded-lg p-2 sm:p-2.5 lg:p-3 w-14 sm:w-16 lg:w-20 text-center backdrop-blur-sm border border-white/20">
+                                <p id="cd-seconds" class="font-serif text-xl sm:text-2xl lg:text-3xl font-bold text-brand-goldlight">00</p>
+                                <p class="text-[9px] lg:text-[10px] uppercase tracking-wider mt-0.5">Detik</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white text-brand-dark rounded-2xl p-5 sm:p-6 lg:p-7 shadow-xl relative overflow-hidden max-w-sm sm:max-w-md lg:max-w-lg mx-auto">
+                        <div class="absolute top-0 right-0 w-16 h-16 lg:w-20 lg:h-20 bg-brand-gold rounded-bl-full opacity-20"></div>
+                        <h4 class="font-serif text-xl sm:text-2xl lg:text-3xl font-bold text-brand-gold mb-1">Resepsi</h4>
+                        <p class="text-[10px] lg:text-xs text-gray-500 mb-3 lg:mb-4 uppercase tracking-widest font-semibold">Syukuran & Pesta</p>
+                        
+                        <div class="flex items-start gap-3 lg:gap-4 mb-2.5 lg:mb-3">
+                            <svg class="w-5 h-5 lg:w-6 lg:h-6 text-brand-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            <div>
+                                <p id="resepsi-date" class="font-semibold text-xs sm:text-sm lg:text-base">Tanggal Resepsi</p>
+                                <p id="resepsi-time" class="text-xs lg:text-sm text-gray-600">Waktu Resepsi</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 lg:gap-4 mb-3 sm:mb-4 lg:mb-5">
+                            <svg class="w-5 h-5 lg:w-6 lg:h-6 text-brand-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <div>
+                                <p id="resepsi-venue" class="font-semibold text-xs sm:text-sm lg:text-base">Tempat</p>
+                                <p id="resepsi-address" class="text-xs lg:text-sm text-gray-600 leading-relaxed">Alamat Lengkap</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col gap-2 lg:gap-2.5 mt-3 sm:mt-4 lg:mt-5">
+                            <a id="map-link" href="#" target="_blank" class="inline-block bg-brand-dark text-white text-xs lg:text-sm px-4 py-2.5 lg:py-3 rounded-full hover:bg-brand-gold transition w-full text-center font-semibold">Buka Google Maps</a>
+                            <a id="calendar-link" href="#" class="inline-flex items-center justify-center gap-2 border border-brand-dark text-brand-dark text-xs lg:text-sm px-4 py-2.5 lg:py-3 rounded-full hover:bg-gray-100 transition w-full text-center font-semibold">
+                                Tambahkan ke Kalender
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. GALLERY PREWEDDING (Carousel Layout, 1 Snap) -->
+            <section id="sec-gallery" class="h-[100dvh] max-h-[100dvh] snap-start flex flex-col justify-center items-center px-6 bg-brand-bg text-center ornament-bg">
+                <div class="w-full h-full max-w-6xl mx-auto flex flex-col justify-center py-8 lg:py-12">
+                    <h3 class="font-script text-3xl lg:text-5xl text-brand-gold mb-1 lg:mb-2 shrink-0" data-aos="fade-up">Our Moments</h3>
+                    <p class="text-sm lg:text-base text-gray-500 mb-5 lg:mb-8 shrink-0" data-aos="fade-up">Sebuah perjalanan cinta yang kami abadikan.</p>
+
+                    <!-- Bento Carousel -->
+                    <div class="relative w-full flex-1 min-h-0 flex items-center" data-aos="fade-up" data-aos-delay="200">
+                        <button id="btn-gallery-prev" onclick="scrollThumbnails(-1)" class="flex absolute -left-2 lg:-left-6 z-10 w-8 h-8 lg:w-11 lg:h-11 bg-white text-brand-gold rounded-full shadow-md items-center justify-center hover:bg-brand-gold hover:text-white transition-all active:scale-75 disabled:opacity-30 disabled:pointer-events-none">
+                            <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+
+                        <div id="gallery-carousel" class="flex items-stretch gap-3 md:gap-4 overflow-x-auto snap-x snap-mandatory touch-pan-x overscroll-x-contain no-scrollbar scroll-smooth w-full h-full px-2" onscroll="checkThumbScroll()">
+                            <!-- Injected by JS -->
+                        </div>
+
+                        <button id="btn-gallery-next" onclick="scrollThumbnails(1)" class="flex absolute -right-2 lg:-right-6 z-10 w-8 h-8 lg:w-11 lg:h-11 bg-white text-brand-gold rounded-full shadow-md items-center justify-center hover:bg-brand-gold hover:text-white transition-all active:scale-75 disabled:opacity-30 disabled:pointer-events-none">
+                            <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. DIGITAL GIFT (AMPLOP DIGITAL) -->
+            <section id="sec-gift" class="h-[100dvh] max-h-[100dvh] snap-start flex flex-col justify-center items-center px-6 bg-brand-bg text-center ornament-bg relative overflow-hidden">
+                <img id="gift-bg-img" class="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none" />
+                <div class="my-auto w-full max-w-md lg:max-w-2xl mx-auto py-16">
+                    <h3 class="font-serif text-3xl lg:text-5xl font-bold text-brand-dark mb-4 lg:mb-6 drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]" data-aos="fade-up">Wedding Gift</h3>
+                    <p id="gift-content" class="text-sm lg:text-lg text-gray-600 mb-8 lg:mb-10 leading-relaxed drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]" data-aos="fade-up" data-aos-delay="100">
+                        Transfer ke..
+                    </p>
+                    <button onclick="openGiftModal()" class="bg-brand-gold hover:bg-brand-goldlight text-white px-8 lg:px-10 py-3 lg:py-4 rounded-full shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2 w-full max-w-xs lg:max-w-sm mx-auto font-semibold text-sm lg:text-base" data-aos="zoom-in" data-aos-delay="200">
+                        Kirim Hadiah
+                    </button>
+                </div>
+            </section>
+
+            <!-- 8. RSVP & GUESTBOOK (Squeezed into 1 Snap) -->
+            <section id="sec-rsvp" class="h-[100dvh] max-h-[100dvh] snap-start flex flex-col bg-white overflow-hidden">
+
+                <!-- HEADER: Compact Title + Expand/Shrink Toggle -->
+                <div class="shrink-0 w-full max-w-sm lg:max-w-4xl mx-auto flex justify-between items-center gap-3 px-6 pt-6 pb-3">
+                    <div>
+                        <h3 class="font-serif text-xl lg:text-3xl font-bold text-brand-dark leading-none">Doa & Ucapan</h3>
+                        <p class="text-[12px] lg:text-sm text-gray-500 mt-1">Tinggalkan pesan bahagia</p>
+                    </div>
+                    <button type="button" onclick="toggleMessages()" class="shrink-0 text-[10px] lg:text-xs font-semibold bg-brand-gold/10 hover:bg-brand-gold/20 text-brand-gold px-3 lg:px-4 py-1.5 lg:py-2 rounded-full flex items-center gap-1.5 transition">
+                        <span id="msg-toggle-text">Perbesar</span>
+                        <svg id="msg-toggle-icon" class="w-3 h-3 lg:w-4 lg:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+                    </button>
+                </div>
+
+                <!-- Messages List (Chat box container, scrollable) -->
+                <div class="flex-1 overflow-y-auto overscroll-contain touch-pan-y min-h-0 w-full max-w-sm lg:max-w-4xl mx-auto px-6 mb-3 lg:mb-4 space-y-2.5 no-scrollbar flex flex-col justify-start" id="messages-container" onscroll="handleMessageScroll(this)">
+                    <div class="text-center text-xs text-gray-400 py-2 w-full col-span-full" id="loading-messages">Memuat ucapan...</div>
+                </div>
+
+                <!-- BOTTOM FORM BAR -->
+                <div id="rsvp-top-part" class="shrink-0 w-full border-t border-gray-100 bg-gray-50 px-4 pt-3 pb-4 lg:p-6 transition-transform duration-200">
+                    <form id="rsvp-form" class="w-full max-w-sm lg:max-w-4xl mx-auto flex flex-col gap-2 lg:gap-3">
+                        <input type="text" name="website_hp" class="hidden" tabindex="-1" autocomplete="off">
+                        <input type="text" id="rsvp-name" name="Nama" required oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 lg:px-4 lg:py-3 text-xs lg:text-base focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold" placeholder="Nama anda">
+                        <textarea id="rsvp-message" name="Pesan" rows="3" required class="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 lg:px-4 lg:py-3 text-xs lg:text-base focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold resize-none" placeholder="Ketikan pesan / doa disini..."></textarea>
+                        <div class="flex gap-2 lg:gap-3">
+                            <select id="rsvp-status" name="Kehadiran" class="w-1/2 bg-white border border-gray-300 rounded-lg px-3 py-2 lg:px-4 lg:py-3 text-xs lg:text-base focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold">
+                                <option value="Hadir">Hadir</option>
+                                <option value="Ragu">Ragu</option>
+                                <option value="Tidak Hadir">Tidak Hadir</option>
+                            </select>
+                            <button type="submit" id="btn-submit" class="w-1/2 bg-brand-dark text-white hover:bg-brand-gold py-2 lg:py-3 rounded-lg text-xs lg:text-base font-semibold transition-colors flex items-center justify-center gap-2">
+                                <span id="btn-text">Kirim Ucapan</span>
+                                <svg id="btn-loading" class="animate-spin h-3 w-3 lg:h-4 lg:w-4 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 9. CLOSING -->
+            <section id="sec-closing" class="h-[100dvh] snap-start flex flex-col bg-brand-dark text-brand-bg relative z-10 overflow-hidden">
+                <img id="closing-bg-img" class="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none z-0" />
+                <div class="flex-1 flex flex-col items-center justify-center px-8 text-center relative z-10">
+                    <h3 id="closing-sign" class="font-serif text-2xl lg:text-4xl font-bold text-brand-gold mb-6 lg:mb-8">Salam</h3>
+                    <p id="closing-content" class="text-sm lg:text-lg leading-relaxed text-gray-300 mb-8 lg:mb-12 max-w-sm lg:max-w-xl">
+                        Merupakan suatu kehormatan
+                    </p>
+                    <p class="text-xs lg:text-sm text-brand-gold mb-2 lg:mb-4">Kami yang berbahagia,</p>
+                    <h2 id="closing-title" class="font-script text-4xl lg:text-6xl">Nama & Nama</h2>
+                </div>
+                
+                <div class="w-full border-t border-white/50 pt-4 pb-6 px-4 text-center mt-auto shrink-0">
+                    <p class="text-[11px] lg:text-xs">Created with ❤️ by Gus Eka</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- GIFT MODAL -->
+    <div id="gift-modal" class="fixed inset-0 z-[110] hidden items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeGiftModal()"></div>
+        <div class="bg-white rounded-2xl w-full max-w-md relative z-10 p-6 shadow-2xl transform scale-95 opacity-0 transition-all duration-300" id="gift-modal-content">
+            <button id="gift-modal-close-btn" onclick="closeGiftModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+            <h3 class="font-serif text-2xl font-bold text-brand-dark mb-2 text-center mt-2">Kirim Hadiah</h3>
+            <p class="text-xs text-gray-500 mb-6 text-center">Silakan transfer ke rekening berikut:</p>
+            
+            <div id="gift-container" class="space-y-4 max-w-sm mx-auto max-h-[60vh] overflow-y-auto no-scrollbar pb-2">
+                <!-- Banks dynamically injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX OVERLAY -->
+    <div id="lightbox" class="fixed inset-0 z-[110] hidden bg-black flex-col transition-opacity duration-300 opacity-0 w-full h-[100dvh]">
+        
+        <!-- Close Button (Fixed at Top Right) -->
+        <button id="lightbox-close-btn" onclick="closeLightbox()" class="absolute top-4 right-4 md:top-6 md:right-6 text-white/70 hover:text-white z-[60] p-2 touch-manipulation">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+
+        <!-- Main Image Area (Takes all space between top and thumbnails) -->
+        <div id="lightbox-image-area" class="relative flex-1 w-full flex items-center justify-center p-4 mt-12 md:mt-16 overflow-hidden">
+            <button id="lightbox-prev-btn" class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 text-white/50 hover:text-white p-2 rounded-full bg-black/30 hover:bg-black/60 transition-all active:scale-75 z-50 touch-manipulation">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+            </button>
+            
+            <img id="lightbox-img" class="max-h-full max-w-full object-contain mx-auto" alt="Full screen preview" style="opacity: 0; transform: scale(0.95);">
+            
+            <button id="lightbox-next-btn" class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 text-white/50 hover:text-white p-2 rounded-full bg-black/30 hover:bg-black/60 transition-all active:scale-75 z-50 touch-manipulation">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+            </button>
+        </div>
+
+        <!-- Thumbnails Area (Fixed at Bottom) -->
+        <div class="w-full shrink-0 flex flex-col items-center gap-3 px-4 pb-6 pt-2 z-50">
+            <div class="text-white/70 text-xs font-semibold tracking-widest">
+                <span id="lightbox-counter">1</span> / <span id="lightbox-total">8</span>
+            </div>
+            <div id="lightbox-thumbs" class="flex gap-3 overflow-x-auto snap-x snap-mandatory no-scrollbar w-full px-6 pb-2">
+                <!-- Thumbs injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING MENU POPUP -->
+    <div id="nav-menu" class="fixed bottom-[10.5rem] right-6 lg:right-10 bg-white/95 backdrop-blur-sm shadow-[0_4px_15px_rgba(0,0,0,0.15)] rounded-2xl p-2 flex flex-col gap-1 z-[55] transform scale-0 origin-bottom-right transition-transform duration-300 border border-brand-gold/20 hidden">
+        <button onclick="scrollToSection('sec-quote')" class="text-xs font-semibold text-brand-dark hover:text-brand-gold hover:bg-gray-50 px-4 py-2 rounded-xl text-right transition">Pembukaan</button>
+        <button onclick="scrollToSection('sec-groom')" class="text-xs font-semibold text-brand-dark hover:text-brand-gold hover:bg-gray-50 px-4 py-2 rounded-xl text-right transition">Mempelai</button>
+        <button onclick="scrollToSection('sec-event')" class="text-xs font-semibold text-brand-dark hover:text-brand-gold hover:bg-gray-50 px-4 py-2 rounded-xl text-right transition">Acara</button>
+        <button onclick="scrollToSection('sec-gallery')" class="text-xs font-semibold text-brand-dark hover:text-brand-gold hover:bg-gray-50 px-4 py-2 rounded-xl text-right transition">Galeri</button>
+        <button onclick="scrollToSection('sec-gift')" class="text-xs font-semibold text-brand-dark hover:text-brand-gold hover:bg-gray-50 px-4 py-2 rounded-xl text-right transition">Hadiah</button>
+        <button onclick="scrollToSection('sec-rsvp')" class="text-xs font-semibold text-brand-dark hover:text-brand-gold hover:bg-gray-50 px-4 py-2 rounded-xl text-right transition">RSVP</button>
+    </div>
+
+    <!-- FLOATING NAVIGATION BUTTON -->
+    <button id="nav-toggle" onclick="toggleNav()" class="fixed bottom-[7rem] right-6 lg:right-10 w-12 h-12 bg-brand-gold rounded-full shadow-[0_4px_15px_rgba(0,0,0,0.2)] flex items-center justify-center z-[55] text-white transition-transform hover:scale-110 hidden">
+        <svg id="nav-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        <svg id="nav-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 absolute opacity-0 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+
+    <!-- FLOATING MUSIC BUTTON -->
+    <button id="music-toggle" onclick="toggleMusic()" class="fixed bottom-[3.5rem] right-6 lg:right-10 w-12 h-12 bg-white rounded-full shadow-[0_4px_15px_rgba(0,0,0,0.2)] flex items-center justify-center z-[55] border-2 border-brand-gold text-brand-gold transition-transform hover:scale-110 hidden">
+        <svg id="music-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.28l8-1.6v5.434a4.369 4.369 0 00-1-.114c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z" />
+        </svg>
+    </button>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="config.js"></script>
+    
+    <script>
+        // GLOBALS
+        let allMessages = [];
+        let displayedMsgCount = 10;
+        let isLoadingMoreMsgs = false;
+        let isNavOpen = false;
+        let audio;
+        let isPlaying = false;
+
+        // Safari fires its own proprietary gesture events for pinch, separate from
+        // touch events — must be blocked separately.
+        document.addEventListener('gesturestart', function (e) {
+            e.preventDefault();
+        });
+        document.addEventListener('gesturechange', function (e) {
+            e.preventDefault();
+        });
+        document.addEventListener('gestureend', function (e) {
+            e.preventDefault();
+        });
+
+        // Block double-tap-to-zoom (a separate gesture from pinch; not covered
+        // by touch-action or the viewport meta tag on all browsers).
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (e) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                e.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, { passive: false });
+
+        // Block desktop browser zoom: Ctrl/Cmd + scroll-wheel (trackpad pinch
+        // on Chrome/Firefox/Edge) and Ctrl/Cmd + '+' / '-' / '=' / '0' keyboard shortcuts.
+        document.addEventListener('wheel', function (e) {
+            if (e.ctrlKey) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        document.addEventListener('keydown', function (e) {
+            if ((e.ctrlKey || e.metaKey) && ['+', '-', '=', '0'].includes(e.key)) {
+                e.preventDefault();
+            }
+        });
+
+        // ====================================================================
+        // SYNCHRONOUS DATA INJECTION (Runs immediately to prevent flashing)
+        // ====================================================================
+        function initWeddingData() {
+            if(typeof WEDDING_DATA === 'undefined') return;
+
+            // 0. Title
+            const titleEl = document.getElementById('title');
+            if (titleEl) titleEl.innerHTML = WEDDING_DATA.title.name;
+            
+            // 1. Loading Screen Config
+            if (WEDDING_DATA.loading) {
+                if(WEDDING_DATA.loading.text) document.getElementById('loading-text').innerHTML = WEDDING_DATA.loading.text;
+            }
+
+            // 2. Cover & Hero Texts
+            document.getElementById('cover-title').innerHTML = WEDDING_DATA.cover.title;
+            document.getElementById('closing-title').innerHTML = WEDDING_DATA.cover.title;
+
+            // 3. Dynamic Guest Name
+            let guestName = new URLSearchParams(window.location.search).get('kepada');
+            if (guestName) {
+                document.getElementById('guest-name-display').innerText = decodeURIComponent(guestName.replace(/\+/g, ' '));
+            }
+
+            // 4. Greeting and Closing
+            if (WEDDING_DATA.greeting && WEDDING_DATA.greeting.icon) {
+                document.getElementById('quote-icon').src = WEDDING_DATA.greeting.icon;
+                document.getElementById('quote-icon-container').classList.remove('hidden');
+                
+                const defaultIcon = document.getElementById('default-quote-icon');
+                if (defaultIcon) defaultIcon.classList.add('hidden');
+            }
+            document.getElementById('greeting-sign').innerHTML = WEDDING_DATA.greeting.sign;
+            document.getElementById('greeting-content').innerHTML = WEDDING_DATA.greeting.content;
+            document.getElementById('greeting-content2').innerHTML = WEDDING_DATA.greeting.content2;
+            document.getElementById('greeting-content3').innerHTML = WEDDING_DATA.greeting.content3;
+            const quoteSec = document.getElementById('sec-quote');
+            if (WEDDING_DATA.greeting && WEDDING_DATA.greeting.bgImage) {
+                const quoteBg = document.getElementById('quote-bg-img');
+                if (quoteBg) quoteBg.src = WEDDING_DATA.greeting.bgImage;
+                if (quoteSec) quoteSec.classList.remove('ornament-bg');
+            } else if (quoteSec) {
+                quoteSec.classList.add('ornament-bg');
+            }
+            document.getElementById('closing-sign').innerHTML = WEDDING_DATA.closing.sign;
+            document.getElementById('closing-content').innerHTML = WEDDING_DATA.closing.content;
+            const closingSec = document.getElementById('sec-closing');
+            if (WEDDING_DATA.closing && WEDDING_DATA.closing.bgImage) {
+                const closingBg = document.getElementById('closing-bg-img');
+                if (closingBg) closingBg.src = WEDDING_DATA.closing.bgImage;
+                if (closingSec) closingSec.classList.remove('ornament-bg');
+            } else if (closingSec) {
+                closingSec.classList.add('ornament-bg');
+            }
+
+
+            // 5. Groom & Bride Profiles
+            document.getElementById('groom-full').innerHTML = WEDDING_DATA.groom.fullName;
+            document.getElementById('groom-parents').innerHTML = WEDDING_DATA.groom.parents;
+            document.getElementById('groom-address').innerHTML = WEDDING_DATA.groom.address;
+            document.getElementById('groom-ig').innerHTML = WEDDING_DATA.groom.ig;
+            document.getElementById('groom-ig-link').href = WEDDING_DATA.groom.igLink;
+
+            document.getElementById('bride-full').innerHTML = WEDDING_DATA.bride.fullName;
+            document.getElementById('bride-parents').innerHTML = WEDDING_DATA.bride.parents;
+            document.getElementById('bride-address').innerHTML = WEDDING_DATA.bride.address;
+            document.getElementById('bride-ig').innerHTML = WEDDING_DATA.bride.ig;
+            document.getElementById('bride-ig-link').href = WEDDING_DATA.bride.igLink;
+
+            // 6. Events
+            document.getElementById('resepsi-date').innerHTML = WEDDING_DATA.event.resepsiDate;
+            document.getElementById('resepsi-time').innerHTML = `${WEDDING_DATA.event.resepsiStartTime} - ${WEDDING_DATA.event.resepsiEndTime} ${WEDDING_DATA.event.timezone}`;
+            document.getElementById('resepsi-venue').innerHTML = WEDDING_DATA.event.resepsiVenue;
+            document.getElementById('resepsi-address').innerHTML = WEDDING_DATA.event.resepsiAddress;
+            document.getElementById('map-link').href = WEDDING_DATA.event.mapLink;
+            const eventSec = document.getElementById('sec-event');
+            if (WEDDING_DATA.event && WEDDING_DATA.event.bgImage) {
+                const eventBg = document.getElementById('event-bg-img');
+                if (eventBg) eventBg.src = WEDDING_DATA.event.bgImage;
+                if (eventSec) eventSec.classList.remove('ornament-bg');
+            } else if (eventSec) {
+                eventSec.classList.add('ornament-bg');
+            }
+            
+            function parseWITAToUTC(dateStr) {
+              // Expects: "Oct 07, 2026 16:00:00"
+              const months = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5, Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
+              const match = dateStr.match(/(\w+) (\d+), (\d+) (\d+):(\d+):(\d+)/);
+              if (!match) throw new Error('Invalid date format: ' + dateStr);
+              const [, monStr, day, year, hour, min, sec] = match;
+
+              // Build the timestamp as if it were UTC, then subtract 8h to convert WITA -> true UTC
+              const utcMs = Date.UTC(+year, months[monStr], +day, +hour, +min, +sec) - 8 * 60 * 60 * 1000;
+              return new Date(utcMs);
+            }
+            
+            function generateICS(startUTC, endUTC) {
+              const fmt = (d) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+
+              return [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//Wedding//Invitation//EN',
+                'CALSCALE:GREGORIAN',
+                'METHOD:PUBLISH',
+                'BEGIN:VEVENT',
+                `UID:${Date.now()}@wedding-invite`,
+                `DTSTAMP:${fmt(new Date())}`,
+                `DTSTART:${fmt(startUTC)}`,
+                `DTEND:${fmt(endUTC)}`,
+                `SUMMARY:${WEDDING_DATA.title.name}`,
+                `DESCRIPTION:Google Maps: ${WEDDING_DATA.event.mapLink}`,
+                `LOCATION:${WEDDING_DATA.event.resepsiVenue} - ${WEDDING_DATA.event.resepsiAddress}`,
+                'END:VEVENT',
+                'END:VCALENDAR'
+              ].join('\r\n');
+            }
+
+            function getPlatform() {
+              const ua = navigator.userAgent;
+              const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+              const isSafari = isIOS && /Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS/.test(ua);
+              const isAndroid = /Android/.test(ua);
+              const isMobile = isIOS || isAndroid;
+
+              return { isIOS, isSafari, isAndroid, isMobile };
+            }
+
+            function buildGoogleCalendarLink(startUTC, endUTC) {
+              const fmt = (d) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+              const params = new URLSearchParams({
+                action: 'TEMPLATE',
+                text: `${WEDDING_DATA.title.name}`,
+                dates: `${fmt(startUTC)}/${fmt(endUTC)}`,
+                details: `Google Maps: ${WEDDING_DATA.event.mapLink}`,
+                location: `${WEDDING_DATA.event.resepsiVenue} - ${WEDDING_DATA.event.resepsiAddress}`
+              });
+              return `https://calendar.google.com/calendar/render?${params.toString()}`;
+            }
+
+            function setCalendarLink() {
+              const datePart = WEDDING_DATA.event.countdownTarget.match(/^(\w+ \d+, \d+)/)[1];
+              const toTimeString = (timeStr) => timeStr.replace('.', ':') + ':00';
+              const startUTC = parseWITAToUTC(`${datePart} ${toTimeString(WEDDING_DATA.event.resepsiStartTime)}`);
+              const endUTC = parseWITAToUTC(`${datePart} ${toTimeString(WEDDING_DATA.event.resepsiEndTime)}`);
+
+              const link = document.getElementById('calendar-link');
+              const { isIOS, isSafari, isMobile } = getPlatform();
+
+              
+              if (!isMobile) {
+                // Desktop: Google Calendar web link
+                link.href = buildGoogleCalendarLink(startUTC, endUTC);
+                link.setAttribute('target', '_blank');
+                link.removeAttribute('download');
+              } else if (isIOS && !isSafari) {
+                // iOS non-Safari (Chrome, Firefox, Edge): no native calendar hook available.
+                link.href = buildGoogleCalendarLink(startUTC, endUTC);
+                link.setAttribute('target', '_blank');
+                link.removeAttribute('download');
+              } else {
+                // iOS Safari or Android: .ics download triggers native calendar app directly.
+                const icsContent = generateICS(startUTC, endUTC);
+                const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+                link.href = URL.createObjectURL(blob);
+                link.setAttribute('download', `${WEDDING_DATA.title.name}.ics`);
+                link.removeAttribute('target');
+              }
+            }
+
+            setCalendarLink();
+
+            // 7. Dynamic Gift Banks Loop
+            document.getElementById('gift-content').innerHTML = WEDDING_DATA.gift.content;
+            const giftSec = document.getElementById('sec-gift');
+            if (WEDDING_DATA.gift && WEDDING_DATA.gift.bgImage) {
+                const giftBg = document.getElementById('gift-bg-img');
+                if (giftBg) giftBg.src = WEDDING_DATA.gift.bgImage;
+                if (giftSec) giftSec.classList.remove('ornament-bg');
+            } else if (giftSec) {
+                giftSec.classList.add('ornament-bg');
+            }
+            const giftContainer = document.getElementById('gift-container');
+            giftContainer.innerHTML = ''; 
+            if (WEDDING_DATA.gift && WEDDING_DATA.gift.banks) {
+                WEDDING_DATA.gift.banks.forEach(bank => {
+                    const safeLogo = escapeHtml(bank.logo);
+                    const safeBankName = escapeHtml(bank.bankName);
+                    const safeNo = escapeHtml(bank.no);
+                    const safeName = escapeHtml(bank.name);
+                    const safeLabel = escapeHtml('Rekening ' + bank.bankName);
+                    const bankHtml = `
+                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 shadow-sm text-center">
+                            ${bank.logo 
+                                ? `<img src="${safeLogo}" alt="${safeBankName}" class="h-6 mx-auto mb-3 object-contain opacity-70">` 
+                                : `<p class="font-serif font-bold text-lg text-brand-dark mb-2">${safeBankName}</p>`
+                            }
+                            <p class="font-bold text-xl tracking-wider text-gray-800 mb-1">${safeNo}</p>
+                            <p class="text-xs text-gray-500 mb-4">a.n ${safeName}</p>
+                            <button type="button" data-bank-no="${safeNo}" data-bank-label="${safeLabel}" class="js-copy-bank bg-white border border-gray-300 hover:bg-brand-gold hover:text-white hover:border-brand-gold text-gray-700 text-xs px-4 py-2 rounded-full transition-colors font-semibold shadow-sm inline-block">
+                                Salin Rekening
+                            </button>
+                        </div>
+                    `;
+                    giftContainer.insertAdjacentHTML('beforeend', bankHtml);
+                });
+
+                giftContainer.querySelectorAll('.js-copy-bank').forEach(btn => {
+                    addTapHandler(btn, () => copyToClipboard(btn.dataset.bankNo, btn.dataset.bankLabel));
+                });
+            }
+
+            // 8. Gallery Injection (Bento Carousel + Lightbox Thumbs)
+            if (WEDDING_DATA.galleryImages && WEDDING_DATA.galleryImages.length > 0) {
+                document.getElementById('lightbox-total').innerText = WEDDING_DATA.galleryImages.length;
+                
+                const thumbsContainer = document.getElementById('gallery-carousel');
+                const lbThumbsContainer = document.getElementById('lightbox-thumbs');
+                thumbsContainer.innerHTML = '';
+                if(lbThumbsContainer) lbThumbsContainer.innerHTML = '';
+                
+                // Bento grid cells (all images). Every 3rd image is a "tall" cell
+                // spanning both grid rows; the two
+                // images that follow stack as a pair in the next column. Each cell
+                // has fixed width/height and the photo is object-contain'd inside it,
+                // so the photo is never cropped — cell shape stays fixed, empty
+                // space (letterboxing) fills any leftover room instead.
+                // Each column is a shaped template: a fixed width plus per-cell flex
+                // weights that split the column's height unevenly. Minimum 2 photos
+                // per column (never 1). Templates cycle: wide column with an uneven
+                // split reads as landscape-over-square; narrow column with an even
+                // split reads as two portraits; medium column with three equal thirds
+                // reads as square trio. Photos stay object-cover to fill each cell.
+                const columnTemplates = [
+                    { width: 'w-56 sm:w-64 md:w-72', weights: [0.55, 0.45] },
+                    { width: 'w-40 sm:w-48 md:w-56', weights: [1, 1] },
+                    { width: 'w-44 sm:w-52 md:w-60', weights: [1, 1, 1] },
+                    { width: 'w-64 sm:w-72 md:w-80', weights: [0.4, 0.6] }
+                ];
+                let imgIndex = 0;
+                let templatePos = 0;
+                while (imgIndex < WEDDING_DATA.galleryImages.length) {
+                    const template = columnTemplates[templatePos % columnTemplates.length];
+                    templatePos++;
+                    let itemsHtml = '';
+                    for (let k = 0; k < template.weights.length && imgIndex < WEDDING_DATA.galleryImages.length; k++, imgIndex++) {
+                        itemsHtml += `
+                            <div class="flex-[${template.weights[k]}] min-h-0 overflow-hidden rounded-xl cursor-pointer shadow-md" onclick="openLightbox(${imgIndex})">
+                                <img src="${WEDDING_DATA.galleryImages[imgIndex]}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
+                            </div>
+                        `;
+                    }
+                    const columnHtml = `
+                        <div class="shrink-0 ${template.width} h-full flex flex-col gap-3 md:gap-4 snap-center">
+                            ${itemsHtml}
+                        </div>
+                    `;
+                    thumbsContainer.insertAdjacentHTML('beforeend', columnHtml);
+                }
+
+                // Lightbox thumbs (all images)
+                for (let i = 0; i < WEDDING_DATA.galleryImages.length; i++) {
+                    const isActive = i === 0 ? 'border-brand-gold opacity-100' : 'border-transparent opacity-50';
+                    
+                    // Add auto margins to perfectly center the thumbnails on large screens,
+                    // without causing them to be cropped on smaller screens.
+                    let alignment = '';
+                    if (i === 0) alignment += 'ml-auto ';
+                    if (i === WEDDING_DATA.galleryImages.length - 1) alignment += 'mr-auto';
+                    
+                    const lbThumbHtml = `
+                        <div id="lb-thumb-${i}" class="shrink-0 h-20 md:h-24 rounded-md overflow-hidden snap-center cursor-pointer shadow-sm border-2 box-border ${isActive} hover:opacity-100 transition-all touch-manipulation ${alignment.trim()}" onclick="openLightbox(${i})">
+                            <img src="${WEDDING_DATA.galleryImages[i]}" class="h-full w-auto object-cover" loading="lazy">
+                        </div>
+                    `;
+                    if(lbThumbsContainer) lbThumbsContainer.insertAdjacentHTML('beforeend', lbThumbHtml);
+                    addTapHandler(document.getElementById(`lb-thumb-${i}`), () => openLightbox(i));
+                }
+            }
+
+            // the thumbnail loops to initialize button states
+            setTimeout(() => checkThumbScroll(), 100);
+            
+            // 9. Prepare Slideshows
+            setupCoverSlideshow();
+            setupSlideshow('groom', WEDDING_DATA.groom.images, WEDDING_DATA.groom.slideshow);
+            setupSlideshow('bride', WEDDING_DATA.bride.images, WEDDING_DATA.bride.slideshow);
+        }
+
+        let coverSlideshowTimer = null;
+
+        function getCoverImages() {
+            if (!WEDDING_DATA.cover) return [];
+            const isPortrait = window.innerWidth / window.innerHeight <= 1.1;
+            if (isPortrait && WEDDING_DATA.cover.imagesPortrait && WEDDING_DATA.cover.imagesPortrait.length > 0) {
+                return WEDDING_DATA.cover.imagesPortrait;
+            }
+            if (!isPortrait && WEDDING_DATA.cover.imagesLandscape && WEDDING_DATA.cover.imagesLandscape.length > 0) {
+                return WEDDING_DATA.cover.imagesLandscape;
+            }
+            return WEDDING_DATA.cover.images || [];
+        }
+
+        function setupCoverSlideshow() {
+            const container = document.getElementById('cover-slideshow-container');
+            if (!container) return;
+
+            const images = getCoverImages();
+            if (!images || images.length === 0) return;
+
+            if (coverSlideshowTimer) clearInterval(coverSlideshowTimer);
+            container.innerHTML = '';
+
+            let intervalTime = 5000;
+            let fadeTime = 3000;
+
+            if (WEDDING_DATA.cover && WEDDING_DATA.cover.slideshow) {
+                if (WEDDING_DATA.cover.slideshow.interval) intervalTime = parseInt(WEDDING_DATA.cover.slideshow.interval);
+                if (WEDDING_DATA.cover.slideshow.duration) fadeTime = parseInt(WEDDING_DATA.cover.slideshow.duration);
+            }
+
+            images.forEach((imgUrl, index) => {
+                const img = document.createElement('img');
+                img.id = `cover-img-${index}`;
+                img.src = imgUrl;
+                img.className = `absolute inset-0 w-full h-full object-cover transition-opacity ${index === 0 ? 'opacity-100' : 'opacity-0'}`;
+                img.style.transitionDuration = `${fadeTime}ms`;
+                container.appendChild(img);
+            });
+
+            if (images.length > 1) {
+                let currentIndex = 0;
+                coverSlideshowTimer = setInterval(() => {
+                    const currentImg = document.getElementById(`cover-img-${currentIndex}`);
+                    if (currentImg) {
+                        currentImg.classList.remove('opacity-100');
+                        currentImg.classList.add('opacity-0');
+                    }
+                    currentIndex = (currentIndex + 1) % images.length;
+                    const nextImg = document.getElementById(`cover-img-${currentIndex}`);
+                    if (nextImg) {
+                        nextImg.classList.remove('opacity-0');
+                        nextImg.classList.add('opacity-100');
+                    }
+                }, intervalTime);
+            }
+        }
+
+        function setupSlideshow(prefix, imagesArray, customConfig) {
+            if (!imagesArray || imagesArray.length === 0) return;
+            const container = document.getElementById(`${prefix}-slideshow-container`);
+            if (!container) return;
+
+            container.innerHTML = '';
+
+            const fadeTime = parseInt(customConfig?.duration || WEDDING_DATA?.slideshow?.duration || 1000);
+
+            imagesArray.forEach((imgUrl, index) => {
+                const img = document.createElement('img');
+                img.id = `${prefix}-img-${index}`;
+                img.src = imgUrl;
+                img.className = `absolute inset-0 w-full h-full object-cover transition-opacity ${index === 0 ? 'opacity-100' : 'opacity-0'}`;
+                img.style.transitionDuration = `${fadeTime}ms`;
+                container.appendChild(img);
+            });
+
+            if (imagesArray.length > 1) {
+                startSlideshowLogic(prefix, imagesArray.length, customConfig);
+            }
+        }
+
+        function startSlideshowLogic(prefix, count, customConfig) {
+            let currentIndex = 0;
+
+            const intervalTime = parseInt(customConfig?.interval || WEDDING_DATA?.slideshow?.interval || 4000);
+
+            setInterval(() => {
+                const currentImg = document.getElementById(`${prefix}-img-${currentIndex}`);
+                if (currentImg) {
+                    currentImg.classList.remove('opacity-100');
+                    currentImg.classList.add('opacity-0');
+                }
+
+                currentIndex = (currentIndex + 1) % count;
+
+                const nextImg = document.getElementById(`${prefix}-img-${currentIndex}`);
+                if (nextImg) {
+                    nextImg.classList.remove('opacity-0');
+                    nextImg.classList.add('opacity-100');
+                }
+            }, intervalTime);
+        }
+
+        // Run synchronously to block flashing
+        initWeddingData(); 
+
+        // ====================================================================
+        // REAL LOADING SCREEN PROGRESSION
+        // ====================================================================
+        let loadProgress = 0;
+        let isPageLoaded = false;
+
+        // Listen for the browser's native load event (fires only when ALL scripts, images, and external links are 100% downloaded)
+        window.addEventListener('load', () => {
+            isPageLoaded = true;
+        });
+
+        const loadInterval = setInterval(() => {
+            // If the browser confirms everything is loaded, jump to 100% and finish
+            if (isPageLoaded) {
+                loadProgress = 100;
+                document.getElementById('loading-progress').innerText = loadProgress + '%';
+                clearInterval(loadInterval);
+                finishLoading();
+                return;
+            }
+            
+            // While waiting for the real load, increment the counter to keep the UI feeling responsive, 
+            // but hard-cap it at 90% until the actual 'load' event fires.
+            if (loadProgress < 90) {
+                loadProgress += Math.floor(Math.random() * 10) + 2;
+                if (loadProgress > 90) loadProgress = 90; // Trap it at 90%
+                document.getElementById('loading-progress').innerText = loadProgress + '%';
+            }
+        }, 150);
+
+        function finishLoading() {
+            setTimeout(() => {
+                const loader = document.getElementById('loading-screen');
+                loader.classList.add('opacity-0');
+                
+                // Show cover elegantly
+                const cover = document.getElementById('welcome-overlay');
+                cover.classList.remove('opacity-0');
+                
+                setTimeout(() => loader.remove(), 1000);
+            }, 300); // Slight delay at 100% so the user registers the completion
+        }
+
+        // ====================================================================
+        // DOM LOADED LOGIC (Animations & Fetch)
+        // ====================================================================
+        document.addEventListener("DOMContentLoaded", () => {
+             AOS.init({ duration: 1000, once: false, mirror: true, offset: 50, disableMutationObserver: true });
+
+            // Fix AOS inside custom scrollable container
+            const aosElements = document.querySelectorAll('[data-aos]');
+            const observer = new IntersectionObserver((entries) => {
+                if (isInteractionLocked) return;
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('aos-animate');
+                    } else if (!entry.target.closest('#sec-rsvp')) {
+                        entry.target.classList.remove('aos-animate');
+                    }
+                });
+            }, { root: document.getElementById('main-wrapper'), threshold: 0.1, rootMargin: '-5% 0px -5% 0px' });
+            
+            aosElements.forEach(el => observer.observe(el));
+ 
+            audio = document.getElementById('bg-music');
+             document.addEventListener('visibilitychange', () => {
+                 if (!audio) return;
+                 const musicIcon = document.getElementById('music-icon');
+                 if (document.hidden) {
+                     if (isPlaying) {
+                         audio.pause();
+                         if (musicIcon) musicIcon.classList.remove('animate-spin-slow');
+                     }
+                 } else {
+                     if (isPlaying) {
+                         audio.play().catch(e => console.log("Autoplay blocked on resume."));
+                         if (musicIcon) musicIcon.classList.add('animate-spin-slow');
+                     }
+                 }
+             });
+             fetchMessages();
+        });
+
+        // ====================================================================
+        // SNAP POSITION PRESERVATION ON ORIENTATION / RESIZE CHANGE
+        // ====================================================================
+        let orientationResizeTimer = null;
+        let orientationFollowupTimer = null;
+        let lastKnownSection = null;
+        let scrollTrackTimer = null;
+        let lastViewportWidth = window.innerWidth;
+
+        function getCurrentSnapSection() {
+            const sectionIds = ['sec-quote', 'sec-groom', 'sec-bride', 'sec-event', 'sec-gallery', 'sec-gift', 'sec-rsvp'];
+            let closest = null;
+            let closestDist = Infinity;
+            sectionIds.forEach(id => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                const dist = Math.abs(el.getBoundingClientRect().top);
+                if (dist < closestDist) {
+                    closestDist = dist;
+                    closest = el;
+                }
+            });
+            return closest;
+        }
+
+        function trackScrollPosition() {
+            clearTimeout(scrollTrackTimer);
+            scrollTrackTimer = setTimeout(() => {
+                const current = getCurrentSnapSection();
+                if (current) lastKnownSection = current;
+            }, 100);
+        }
+
+        function forceScrollToSection(section) {
+            const container = document.getElementById('main-wrapper');
+            if (!container || !section) return;
+            // Explicit 'instant' bypasses the container's CSS scroll-smooth,
+            // so this can't be interrupted mid-animation by a native re-snap.
+            container.scrollTo({ top: section.offsetTop, behavior: 'instant' });
+        }
+
+        function handleOrientationResize() {
+            // Ignore this entirely while an RSVP field has the keyboard open.
+            // Some mobile browsers (notably Chrome on iPadOS) report transient
+            // innerWidth fluctuations while the keyboard is animating in/out;
+            // if those got baked into lastViewportWidth below, the next resize
+            // event after the field blurs would compare against a stale
+            // baseline and force an unwanted re-snap to lastKnownSection.
+            if (isInteractionLocked) return;
+            if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
+
+            // Safari's toolbar auto-hides/shows while scrolling, which fires
+            // 'resize' / visualViewport 'resize' with the SAME width and only
+            // a changed height. That was being treated as an orientation
+            // change and fought the user mid-scroll (forcing the page back
+            // to lastKnownSection while they were still scrolling away from
+            // it). Genuine device rotation always changes the width, so only
+            // act when width actually changed.
+            const currentWidth = window.innerWidth;
+            if (currentWidth === lastViewportWidth) return;
+            lastViewportWidth = currentWidth;
+
+            clearTimeout(orientationResizeTimer);
+            orientationResizeTimer = setTimeout(() => {
+                forceScrollToSection(lastKnownSection);
+                // iOS can settle its toolbar (address bar show/hide) after
+                // this point and trigger a second, later native re-snap.
+                // Re-apply once more shortly after as a safety net.
+                clearTimeout(orientationFollowupTimer);
+                orientationFollowupTimer = setTimeout(() => {
+                    forceScrollToSection(lastKnownSection);
+                }, 400);
+            }, 250);
+        }
+
+        const mainWrapperEl = document.getElementById('main-wrapper');
+        if (mainWrapperEl) mainWrapperEl.addEventListener('scroll', trackScrollPosition, { passive: true });
+        window.addEventListener('orientationchange', handleOrientationResize);
+        window.addEventListener('resize', handleOrientationResize);
+
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', handleOrientationResize);
+        }
+
+        // ====================================================================
+        // SCROLL / AOS LOCK (Lightbox, Gift Modal, RSVP typing on mobile)
+        // ====================================================================
+        let isInteractionLocked = false;
+        let lockedScrollTop = 0;
+        let aosSnapshot = null;
+        let aosGuardObserver = null;
+        let lockGeneration = 0;
+        let aosGuardTeardownTimer = null;
+
+        function isMobileViewport() {
+            return window.innerWidth < 1024;
+        }
+
+        function lockScroll() {
+            const container = document.getElementById('main-wrapper');
+            if (!container) return;
+            isInteractionLocked = true;
+            lockGeneration++;
+            lockedScrollTop = container.scrollTop;
+            container.style.overflow = 'hidden';
+            container.style.touchAction = 'none';
+
+            // Also lock the outer document. openInvitation() removes the initial
+            // overflow-hidden class from <html>/<body>, so once the invite is open
+            // they're scrollable ancestors again. Without this, a focused input's
+            // native "scroll into view" request finds #main-wrapper locked and
+            // falls back to scrolling html/body instead, yanking the whole page
+            // to the top instead of leaving it in place.
+            document.documentElement.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden';
+
+            clearTimeout(aosGuardTeardownTimer);
+
+            // If a previous lock session's observer is still attached (e.g. this lock
+            // was triggered again before a matching unlockScroll ran), disconnect it
+            // first so observers don't stack up.
+            if (aosGuardObserver) {
+                aosGuardObserver.disconnect();
+                aosGuardObserver = null;
+            }
+
+            // Snapshot every AOS element's current animate state.
+            const aosElements = document.querySelectorAll('[data-aos]');
+            aosSnapshot = new Map();
+            aosElements.forEach(el => {
+                aosSnapshot.set(el, el.classList.contains('aos-animate'));
+            });
+
+            // AOS's own internal resize/scroll handler runs outside our control and can
+            // strip 'aos-animate' the instant it happens (e.g. keyboard opening on RSVP,
+            // where the section stays visible — unlike the lightbox/modal, which hide it).
+            // Actively revert any such change back to the snapshotted state in real time.
+            aosGuardObserver = new MutationObserver(mutations => {
+                mutations.forEach(m => {
+                    const el = m.target;
+                    if (!aosSnapshot.has(el)) return;
+                    const shouldHave = aosSnapshot.get(el);
+                    if (el.classList.contains('aos-animate') !== shouldHave) {
+                        el.classList.toggle('aos-animate', shouldHave);
+                    }
+                });
+            });
+            aosElements.forEach(el => {
+                aosGuardObserver.observe(el, { attributes: true, attributeFilter: ['class'] });
+            });
+        }
+
+        function unlockScroll() {
+            const container = document.getElementById('main-wrapper');
+            if (!container) return;
+            isInteractionLocked = false;
+            container.style.overflow = '';
+            container.style.touchAction = '';
+            container.scrollTop = lockedScrollTop;
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+
+            // AOS's own internal resize/scroll-settle handler can fire well after the
+            // visible close transition or momentum scroll appears to have stopped —
+            // the exact timing varies with scroll velocity/device and can't be reliably
+            // guessed with a fixed delay. Keep the guard + snapshot alive for a grace
+            // period after this call so any trailing AOS activity is still caught and
+            // reverted, rather than tearing down protection immediately.
+            const myGeneration = lockGeneration;
+            clearTimeout(aosGuardTeardownTimer);
+            aosGuardTeardownTimer = setTimeout(() => {
+                if (lockGeneration !== myGeneration) return; // a newer lock has started since
+                if (aosGuardObserver) {
+                    aosGuardObserver.disconnect();
+                    aosGuardObserver = null;
+                }
+                if (aosSnapshot) {
+                    aosSnapshot.forEach((hadAnimate, el) => {
+                        el.classList.toggle('aos-animate', hadAnimate);
+                    });
+                    aosSnapshot = null;
+                }
+            }, 700);
+        }
+
+        // ====================================================================
+        // NAVIGATION & INVITATION OPEN LOGIC
+        // ====================================================================
+        function toggleNav() {
+            const menu = document.getElementById('nav-menu');
+            const iconOpen = document.getElementById('nav-icon-open');
+            const iconClose = document.getElementById('nav-icon-close');
+            
+            if (isNavOpen) {
+                menu.classList.remove('scale-100');
+                menu.classList.add('scale-0');
+                setTimeout(() => menu.classList.add('hidden'), 300);
+                iconOpen.classList.remove('opacity-0');
+                iconClose.classList.add('opacity-0');
+            } else {
+                menu.classList.remove('hidden');
+                setTimeout(() => {
+                    menu.classList.remove('scale-0');
+                    menu.classList.add('scale-100');
+                }, 10);
+                iconOpen.classList.add('opacity-0');
+                iconClose.classList.remove('opacity-0');
+            }
+            isNavOpen = !isNavOpen;
+        }
+
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                // Adding block: 'start' ensures the smooth scroll perfectly 
+                // aligns with the 'snap-start' CSS property of the sections
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            if(isNavOpen) toggleNav();
+        }
+
+        function openInvitation() {
+            const overlay = document.getElementById('welcome-overlay');
+            overlay.classList.add('animate-fade-out-up');
+            
+            // Unlock Scrolling!
+            document.documentElement.classList.remove('overflow-hidden');
+            document.body.classList.remove('overflow-hidden');
+            
+            // Show Buttons
+            document.getElementById('music-toggle').classList.remove('hidden');
+            document.getElementById('nav-toggle').classList.remove('hidden');
+            
+            if(audio) {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    document.getElementById('music-icon').classList.add('animate-spin-slow');
+                }).catch(e => console.log("Autoplay blocked."));
+            }
+            
+            setTimeout(() => { overlay.style.display = 'none'; }, 1000);
+        }
+
+        function toggleMusic() {
+            const musicIcon = document.getElementById('music-icon');
+            const musicBtn = document.getElementById('music-toggle');
+            if (isPlaying) {
+                if(audio) audio.pause();
+                musicIcon.classList.remove('animate-spin-slow');
+                musicBtn.classList.add('opacity-60');
+            } else {
+                if(audio) audio.play();
+                musicIcon.classList.add('animate-spin-slow');
+                musicBtn.classList.remove('opacity-60');
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // GIFT MODAL LOGIC
+        function openGiftModal() {
+            const giftModal = document.getElementById('gift-modal');
+            const giftModalContent = document.getElementById('gift-modal-content');
+            lockScroll();
+            giftModal.classList.remove('hidden');
+            giftModal.classList.add('flex');
+            setTimeout(() => {
+                giftModalContent.classList.remove('scale-95', 'opacity-0');
+                giftModalContent.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeGiftModal() {
+            const giftModal = document.getElementById('gift-modal');
+            const giftModalContent = document.getElementById('gift-modal-content');
+            unlockScroll();
+            giftModalContent.classList.remove('scale-100', 'opacity-100');
+            giftModalContent.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                giftModal.classList.add('hidden');
+                giftModal.classList.remove('flex');
+            }, 300);
+        }
+
+        // ====================================================================
+        // GALLERY CAROUSEL LOGIC
+        // ====================================================================
+        function checkThumbScroll() {
+            const container = document.getElementById('gallery-carousel');
+            const prevBtn = document.getElementById('btn-gallery-prev');
+            const nextBtn = document.getElementById('btn-gallery-next');
+            if (!container || !prevBtn || !nextBtn) return;
+
+            // Disable Prev button if scrolled to the absolute start
+            prevBtn.disabled = container.scrollLeft <= 2; 
+            
+            // Disable Next button if scrolled to the absolute end (allow 2px margin for browser rounding)
+            nextBtn.disabled = Math.ceil(container.scrollLeft + container.clientWidth) >= container.scrollWidth - 2;
+        }
+        function scrollThumbnails(direction) {
+            const container = document.getElementById('gallery-carousel');
+            // Calculate a more dynamic scroll amount (80% of the container width) for a stronger sliding effect
+            const scrollAmount = container.clientWidth * 0.8; 
+            container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
+
+        let currentImageIndex = 0;
+
+        function addTapHandler(el, handler) {
+            if (!el) return;
+            let startX = 0, startY = 0, moved = false;
+            el.addEventListener('touchstart', (e) => {
+                const t = e.touches[0];
+                startX = t.clientX;
+                startY = t.clientY;
+                moved = false;
+            }, { passive: true });
+            el.addEventListener('touchmove', (e) => {
+                const t = e.touches[0];
+                if (Math.abs(t.clientX - startX) > 10 || Math.abs(t.clientY - startY) > 10) {
+                    moved = true;
+                }
+            }, { passive: true });
+            el.addEventListener('touchend', (e) => {
+                if (!moved) {
+                    e.preventDefault();
+                    handler();
+                }
+            });
+            el.addEventListener('click', () => {
+                handler();
+            });
+        }
+
+        addTapHandler(document.getElementById('lightbox-close-btn'), closeLightbox);
+        addTapHandler(document.getElementById('lightbox-prev-btn'), () => changeLightbox(-1));
+        addTapHandler(document.getElementById('lightbox-next-btn'), () => changeLightbox(1));
+        addTapHandler(document.getElementById('gift-modal-close-btn'), closeGiftModal);
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lockScroll();
+            
+            // Reset image position
+            lightboxImg.style.transition = 'none';
+            lightboxImg.style.transform = 'scale(0.95)';
+            lightboxImg.style.opacity = '0';
+            
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            
+            // Delay updating content to allow flex layout to render, ensuring scrollIntoView works perfectly
+            setTimeout(() => {
+                updateLightboxContent();
+                lightbox.classList.remove('opacity-0');
+                lightbox.classList.add('opacity-100');
+                
+                lightboxImg.style.transition = 'all 0.3s ease-out';
+                lightboxImg.style.transform = 'scale(1)';
+                lightboxImg.style.opacity = '1';
+            }, 10);
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            unlockScroll();
+            
+            lightbox.classList.remove('opacity-100');
+            lightbox.classList.add('opacity-0');
+            
+            lightboxImg.style.transition = 'all 0.3s ease-in';
+            lightboxImg.style.transform = 'scale(0.95)';
+            lightboxImg.style.opacity = '0';
+            
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+            }, 300);
+        }
+
+        function changeLightbox(direction) {
+            if(!WEDDING_DATA.galleryImages) return;
+            
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            // Slide out effect
+            lightboxImg.style.transition = 'all 0.2s ease-in';
+            lightboxImg.style.transform = `translateX(${direction * -50}px) scale(0.95)`;
+            lightboxImg.style.opacity = '0';
+            
+            setTimeout(() => {
+                currentImageIndex += direction;
+                if (currentImageIndex < 0) currentImageIndex = WEDDING_DATA.galleryImages.length - 1;
+                if (currentImageIndex >= WEDDING_DATA.galleryImages.length) currentImageIndex = 0;
+                
+                updateLightboxContent();
+                
+                // Set starting position for slide in from opposite direction
+                lightboxImg.style.transition = 'none';
+                lightboxImg.style.transform = `translateX(${direction * 50}px) scale(0.95)`;
+                
+                // Force browser reflow to apply the starting position instantly
+                void lightboxImg.offsetWidth;
+                
+                // Slide in effect
+                lightboxImg.style.transition = 'all 0.3s ease-out';
+                lightboxImg.style.transform = 'translateX(0) scale(1)';
+                lightboxImg.style.opacity = '1';
+            }, 200);
+        }
+
+        // Swipe navigation for the lightbox main image area, alongside the arrow
+        // buttons — reuses changeLightbox() so the animation is identical either way.
+        (function setupLightboxSwipe() {
+            const area = document.getElementById('lightbox-image-area');
+            if (!area) return;
+            const SWIPE_THRESHOLD = 40;
+            let startX = 0, startY = 0, tracking = false;
+
+            area.addEventListener('touchstart', (e) => {
+                if (e.touches.length !== 1) { tracking = false; return; }
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                tracking = true;
+            }, { passive: true });
+
+            area.addEventListener('touchend', (e) => {
+                if (!tracking) return;
+                tracking = false;
+                const endX = e.changedTouches[0].clientX;
+                const endY = e.changedTouches[0].clientY;
+                const deltaX = endX - startX;
+                const deltaY = endY - startY;
+
+                if (Math.abs(deltaX) > SWIPE_THRESHOLD && Math.abs(deltaX) > Math.abs(deltaY)) {
+                    changeLightbox(deltaX < 0 ? 1 : -1);
+                }
+            });
+        })();
+
+        function updateLightboxContent() {
+            if(!WEDDING_DATA.galleryImages) return;
+            document.getElementById('lightbox-img').src = WEDDING_DATA.galleryImages[currentImageIndex];
+            document.getElementById('lightbox-counter').innerText = currentImageIndex + 1;
+
+            // Highlight active thumb
+            WEDDING_DATA.galleryImages.forEach((_, idx) => {
+                const thumb = document.getElementById(`lb-thumb-${idx}`);
+                if (thumb) {
+                    if (idx === currentImageIndex) {
+                        thumb.classList.remove('border-transparent', 'opacity-50');
+                        thumb.classList.add('border-brand-gold', 'opacity-100');
+                        thumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                    } else {
+                        thumb.classList.add('border-transparent', 'opacity-50');
+                        thumb.classList.remove('border-brand-gold', 'opacity-100');
+                    }
+                }
+            });
+        }
+
+        // ====================================================================
+        // RSVP & PAGINATION LOGIC
+        // ====================================================================
+        let isMsgExpanded = false;
+        
+        function toggleMessages() {
+            const topPart = document.getElementById('rsvp-top-part');
+            const text = document.getElementById('msg-toggle-text');
+            const icon = document.getElementById('msg-toggle-icon');
+            const msgContainer = document.getElementById('messages-container');
+            
+            isMsgExpanded = !isMsgExpanded;
+            
+            if (isMsgExpanded) {
+                // Hide the form to allow the list to expand fully
+                topPart.classList.add('hidden');
+                text.innerText = "Perkecil";
+                // Change icon to 'shrink' (arrows pointing inward)
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 14h6m0 0v6m0-6l-7 7m17-11h-6m0 0V4m0 6l7-7m-7 17v-6m0 0h6m-6 0l7 7M7 10H1m6 0V4m0 6L0 0"></path>';
+            } else {
+                // Show the form again
+                topPart.classList.remove('hidden');
+                text.innerText = "Perbesar";
+                // Change icon back to 'expand' (arrows pointing outward)
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>';
+            }
+
+            if (msgContainer) {
+                setTimeout(() => {
+                    msgContainer.scrollTop = msgContainer.scrollHeight;
+                }, 50);
+            }
+        }
+        function getRelativeTime(timestamp) {
+            if (!timestamp) return '';
+            const d = new Date(timestamp);
+            if (isNaN(d.getTime())) return timestamp;
+
+            const now = new Date();
+            const diffMs = now.getTime() - d.getTime();
+            if (diffMs < 0) return 'Baru saja';
+
+            const diffMins = Math.floor(diffMs / (1000 * 60));
+            const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+            const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+            if (diffMins < 1) return 'Baru saja';
+            if (diffMins < 60) return `${diffMins} menit lalu`;
+            if (diffHours < 24) return `${diffHours} jam lalu`;
+            return `${diffDays} hari lalu`;
+        }
+
+        function fetchMessages(isRetry = false) {
+            const container = document.getElementById('messages-container');
+            let hasCachedData = false;
+
+            try {
+                const cached = localStorage.getItem('wedding_guestbook_cache');
+                if (cached) {
+                    const parsed = JSON.parse(cached);
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        allMessages = parsed.slice().filter(msg => msg.Nama && msg.Pesan);
+                        displayedMsgCount = 10;
+                        renderMessages(true);
+                        hasCachedData = true;
+                    }
+                }
+            } catch (e) {
+                console.warn('localStorage read error:', e);
+            }
+
+            if (!hasCachedData && container) {
+                container.innerHTML = '<div class="text-center text-xs text-gray-400 py-2 w-full col-span-full" id="loading-messages">Memuat ucapan...</div>';
+            }
+
+            if (typeof WEDDING_DATA === 'undefined' || !WEDDING_DATA.googleSheetUrl) {
+                if (!hasCachedData && container) container.innerHTML = '<div class="text-xs text-gray-500 text-center py-4 col-span-full">Belum ada ucapan.</div>';
+                return;
+            }
+
+            const fetchUrl = WEDDING_DATA.googleSheetUrl.replace(/\/a\/[^\/]+\//, '/');
+
+            const fetchController = new AbortController();
+            const fetchTimeout = setTimeout(() => {
+                try {
+                    fetchController.abort(new Error('Request timed out'));
+                } catch (e) {
+                    fetchController.abort();
+                }
+            }, 30000);
+
+            fetch(fetchUrl, { method: 'GET', redirect: 'follow', signal: fetchController.signal })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok: ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    clearTimeout(fetchTimeout);
+                    if (data.result === 'success' && Array.isArray(data.data) && data.data.length > 0) {
+                        try {
+                            localStorage.setItem('wedding_guestbook_cache', JSON.stringify(data.data));
+                        } catch (e) {
+                            console.warn('localStorage write error:', e);
+                        }
+                        allMessages = data.data.slice().filter(msg => msg.Nama && msg.Pesan);
+                        displayedMsgCount = 10;
+                        renderMessages(true);
+                    } else if (!hasCachedData) {
+                        if (container) container.innerHTML = '<div class="text-xs text-gray-500 text-center py-4 col-span-full">Belum ada ucapan. Jadilah yang pertama!</div>';
+                    }
+                })
+                .catch(error => {
+                    clearTimeout(fetchTimeout);
+                    if (error.name === 'AbortError') {
+                        console.warn('fetchMessages aborted or timed out:', error.message || error);
+                    } else {
+                        console.error('fetchMessages error:', error);
+                    }
+                    if (!isRetry) {
+                        setTimeout(() => fetchMessages(true), 1000);
+                        return;
+                    }
+                    if (!hasCachedData && container) {
+                        container.innerHTML = '<div class="text-xs text-red-500 text-center py-4 col-span-full flex flex-col items-center gap-2"><span>Gagal memuat ucapan.</span><button type="button" onclick="fetchMessages()" class="px-3 py-1 bg-brand-gold text-white text-[11px] rounded-full hover:bg-brand-goldlight transition shadow-sm font-semibold">Coba Lagi</button></div>';
+                    }
+                });
+        }
+
+        function handleMessageScroll(container) {
+            if (!container || isLoadingMoreMsgs || displayedMsgCount >= allMessages.length) return;
+            if (container.scrollTop <= 20) {
+                isLoadingMoreMsgs = true;
+                const loaderHtml = '<div id="scroll-loader" class="text-center text-[11px] text-brand-gold py-2 w-full font-semibold flex items-center justify-center gap-2"><svg class="animate-spin h-3.5 w-3.5 text-brand-gold" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Memuat ucapan terdahulu...</div>';
+                container.insertAdjacentHTML('afterbegin', loaderHtml);
+                setTimeout(() => {
+                    const loader = document.getElementById('scroll-loader');
+                    if (loader) loader.remove();
+                    const previousScrollHeight = container.scrollHeight;
+                    displayedMsgCount += 10;
+                    renderMessages(false);
+                    const newScrollHeight = container.scrollHeight;
+                    container.scrollTop = newScrollHeight - previousScrollHeight;
+                    isLoadingMoreMsgs = false;
+                }, 600);
+            }
+        }
+
+        function escapeHtml(str) {
+            if (str === undefined || str === null) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function renderMessages(scrollToBottom = false) {
+            const container = document.getElementById('messages-container');
+            if (!container) return;
+            container.innerHTML = ''; 
+            
+            if (allMessages.length === 0) return;
+
+            const startIdx = Math.max(0, allMessages.length - displayedMsgCount);
+            const pageMessages = allMessages.slice(startIdx);
+
+            pageMessages.forEach(msg => {
+                let statusBadge = '';
+                if(msg.Kehadiran === 'Hadir') statusBadge = '<span class="text-[9px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium inline-block">Hadir</span>';
+                else if (msg.Kehadiran === 'Ragu') statusBadge = '<span class="text-[9px] bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full font-medium inline-block">Ragu</span>';
+                else statusBadge = '<span class="text-[9px] bg-red-100 text-red-700 px-2 py-0.5 rounded-full font-medium inline-block">Tidak Hadir</span>';
+
+                const initials = String(msg.Nama || '').substring(0, 2).toUpperCase();
+                const relTime = getRelativeTime(msg['Timestamp']);
+
+                const fullPesan = String(msg.Pesan || '');
+                const words = fullPesan.trim().split(/\s+/).filter(Boolean);
+                let pesanHtml = '';
+
+                if (words.length > 50) {
+                    const truncated = words.slice(0, 50).join(' ');
+                    pesanHtml = `<span class="whitespace-pre-line">${escapeHtml(truncated)}...</span> <button type="button" onclick="this.previousElementSibling.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden'); this.remove();" class="text-brand-gold font-bold hover:underline cursor-pointer inline-block">Lihat Selengkapnya</button><span class="hidden whitespace-pre-line">${escapeHtml(fullPesan)}</span>`;
+                } else {
+                    pesanHtml = `<span class="whitespace-pre-line">${escapeHtml(fullPesan)}</span>`;
+                }
+
+                const msgHtml = `
+                    <div class="bg-amber-50/70 border border-brand-gold/20 p-3.5 rounded-2xl rounded-tl-xs shadow-xs flex flex-col h-fit transition-all w-full">
+                        <div class="flex justify-between items-center mb-1.5 gap-2">
+                            <div class="flex items-center gap-2 min-w-0">
+                                <div class="w-7 h-7 rounded-full bg-brand-dark text-white flex items-center justify-center font-bold text-[10px] shrink-0 shadow-xs">${escapeHtml(initials)}</div>
+                                <div class="truncate flex items-center gap-1.5">
+                                    <span class="text-xs lg:text-sm font-bold text-brand-dark">${escapeHtml(msg.Nama)}</span>
+                                    ${statusBadge}
+                                </div>
+                            </div>
+                            <span class="text-[10px] lg:text-xs text-gray-400 font-medium shrink-0 ml-auto">${escapeHtml(relTime)}</span>
+                        </div>
+                        <div class="text-xs lg:text-sm text-gray-700 leading-relaxed pl-9 break-words">${pesanHtml}</div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', msgHtml);
+            });
+
+            if (scrollToBottom) {
+                setTimeout(() => {
+                    container.scrollTop = container.scrollHeight;
+                }, 50);
+            }
+        }
+
+        const form = document.getElementById('rsvp-form');
+
+        ['rsvp-name', 'rsvp-message'].forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (!field) return;
+            field.addEventListener('focus', () => {
+                if (!isMobileViewport()) return;
+                lockScroll();
+            });
+            field.addEventListener('blur', () => {
+                if (!isMobileViewport()) return;
+                unlockScroll();
+            });
+        });
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btnSubmit = document.getElementById('btn-submit');
+            const btnText = document.getElementById('btn-text');
+            const btnLoading = document.getElementById('btn-loading');
+            
+            const name = document.getElementById('rsvp-name').value;
+            const status = document.getElementById('rsvp-status').value;
+            const message = document.getElementById('rsvp-message').value;
+
+            btnText.innerText = "Mengirim...";
+            btnLoading.classList.remove('hidden');
+            btnSubmit.disabled = true;
+
+            const processSuccess = () => {
+                allMessages.push({ Nama: name, Kehadiran: status, Pesan: message, Timestamp: new Date().toISOString() });
+                displayedMsgCount = Math.max(displayedMsgCount + 1, 10);
+                renderMessages(true);
+                form.reset();
+                showToast("Pesan terkirim!");
+                btnText.innerText = "Kirim Ucapan";
+                btnLoading.classList.add('hidden');
+                btnSubmit.disabled = false;
+            };
+
+            if (WEDDING_DATA.googleSheetUrl) {
+                const formData = new FormData(form);
+                if (WEDDING_DATA.authToken) {
+                    formData.append('authToken', WEDDING_DATA.authToken);
+                }
+
+                const submitController = new AbortController();
+                const submitTimeout = setTimeout(() => submitController.abort(), 15000);
+
+                fetch(WEDDING_DATA.googleSheetUrl, { method: 'POST', body: formData, signal: submitController.signal })
+                .then(response => response.json())
+                .then(data => {
+                    clearTimeout(submitTimeout);
+                    if (data.result === 'success') {
+                        processSuccess();
+                    } else {
+                        showToast(data.error || "Gagal mengirim ucapan.");
+                        btnText.innerText = "Kirim Ucapan";
+                        btnLoading.classList.add('hidden');
+                        btnSubmit.disabled = false;
+                    }
+                })
+                .catch(() => { clearTimeout(submitTimeout); showToast("Disimpan lokal."); processSuccess(); });
+            } else {
+                setTimeout(processSuccess, 1000);
+            }
+        });
+
+        // ====================================================================
+        // UTILITIES (Countdown, Toast, Copy)
+        // ====================================================================
+        const countdownTimer = setInterval(function() {
+            if (typeof WEDDING_DATA === 'undefined' || !WEDDING_DATA.event.countdownTarget) return;
+            const countDownDate = new Date(WEDDING_DATA.event.countdownTarget).getTime();
+            const distance = countDownDate - new Date().getTime();
+
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById("cd-days").innerText = "00";
+            } else {
+                document.getElementById("cd-days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById("cd-hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById("cd-minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById("cd-seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            }
+        }, 1000);
+
+        function copyToClipboard(text, itemName) {
+            const fallbackCopy = () => {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                textArea.style.position = "fixed";
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showToast(itemName + " disalin!");
+                } catch (err) {
+                    showToast("Gagal menyalin.");
+                }
+                document.body.removeChild(textArea);
+            };
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text)
+                    .then(() => showToast(itemName + " disalin!"))
+                    .catch(fallbackCopy);
+            } else {
+                fallbackCopy();
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.classList.remove('opacity-0', 'translate-y-[-20px]');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-[-20px]');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
